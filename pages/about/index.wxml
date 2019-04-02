@@ -1,6 +1,0 @@
-<view class="about">
-	<view class="about-item">
-		<text class="about-item-title">关于项目</text>
-		<text class="about-item-content">赤享公司</text>
-	</view>
-</view>

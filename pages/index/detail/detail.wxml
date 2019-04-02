@@ -1,0 +1,19 @@
+<import src="../../common/nav.wxml" />
+<import src="../../common/list.wxml" />
+<import src="../../common/short_list.wxml" />
+
+
+<view class="weui-form-preview tabbar">
+    <view class="weui-form-preview__ft">
+        <navigator data-id="1" class="{{n_style}}" hover-class="weui-form-preview__btn_active" bindtap='onReachBottom1'>北校</navigator>
+        <navigator data-id="2" class="{{s_style}}" hover-class="weui-form-preview__btn_active" bindtap='onReachBottom1'>南校</navigator>
+    </view>
+</view>
+
+
+<scroll-view scroll-y style="height: 100%;" scroll-with-animation="{{true}}" >
+    <template is="short_list" />
+    <template is="short_list" />
+    <template is="short_list" />
+    <template is="short_list" />
+</scroll-view>

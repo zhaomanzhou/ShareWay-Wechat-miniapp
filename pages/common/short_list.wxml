@@ -1,0 +1,14 @@
+<template name="short_list">
+    <view class='container'>
+        <view class="title">
+            西区买饭
+        </view>
+        <view class="line"/>
+        <view class="content-detail">
+            <view>物品所在地</view>
+            <view>送达地址</view>
+            <view>跑腿费</view>
+            <view class="public_date">2019-09-23</view>
+        </view>
+    </view>
+</template>

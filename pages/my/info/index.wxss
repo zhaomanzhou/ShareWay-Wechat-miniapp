@@ -1,0 +1,70 @@
+
+.overage{
+	background-color: #fff;
+	padding: 40rpx 0;
+	text-align: center;
+}
+.overage-header{
+	font-size: 24rpx;
+}
+.overage-amount{
+	display: inline-block;
+	padding: 20rpx 0;
+	font-size: 100rpx;
+	font-weight: 700;
+}
+.overage-desc{
+	padding: 10rpx 30rpx;
+	font-size: 24rpx;
+	border-radius: 40rpx;
+	border: 1px solid #666;
+}
+.my-deposit{
+	margin-top: 2rpx;
+}
+.my-invcode{
+	margin-top: 40rpx;
+}
+.c-y{
+	color: #b9dd08;
+	padding-top: -5rpx;
+	padding-right: 10rpx;
+}
+.c-g{
+	padding-top: -5rpx;
+	padding-right: 10rpx;
+}
+
+
+/**
+ * 全局样式表
+ * 使用@import语句可以导入外联样式表，@import后跟需要导入的外联样式表的相对路径，用;表示语句结束
+ * 如果需要增加额外的WXSS样式表, 直接import即可, 但需注意引用顺序
+ */
+
+
+
+/**app.wxss**/
+.container{
+	background-color: #f2f2f2;
+	height: 100vh;
+}
+.title{
+	background-color: #f2f2f2;
+	padding: 30rpx 0 30rpx 50rpx;
+	font-size: 28rpx;
+	color: #000;
+}
+.tapbar{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #fff;
+	padding: 40rpx;
+}
+.btn-charge{
+	width: 90%;
+	background-color: #479de6;
+	margin: 40rpx auto 30rpx;
+	text-align: center;
+}

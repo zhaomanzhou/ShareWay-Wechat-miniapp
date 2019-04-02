@@ -5,37 +5,31 @@ Page({
 		userInfo: {},
 		items: [
 			{
-				icon: '../../assets/images/iconfont-order.png',
-				text: '我的订单',
-				path: '/pages/order/list/index'
+				icon: '../../assets/images/icon_public_active.png',
+				text: '我的发布',
+				path: '/pages/my/public/index'
 			}, 
 			{
-				icon: '../../assets/images/iconfont-addr.png',
-				text: '收货地址',
-				path: '/pages/address/list/index'
+				icon: '../../assets/images/get.png',
+				text: '我的接单',
+				path: '/pages/my/public/index'
 			}, 
+            {
+                icon: '../../assets/images/iconfont-user-active.png',
+                text: '我的信息',
+                path: '/pages/my/info/index'
+            }, 
 			{
 				icon: '../../assets/images/iconfont-kefu.png',
 				text: '联系客服',
-				path: '13720650886',
+				path: '18521708248',
 			}, 
-			{
-				icon: '../../assets/images/iconfont-help.png',
-				text: '常见问题',
-				path: '/pages/help/list/index',
-			},
-		],
-		settings: [
-			{
-				icon: '../../assets/images/iconfont-clear.png',
-				text: '清除缓存',
-				path: '0.0KB'
-			}, 
-			{
-				icon: '../../assets/images/iconfont-about.png',
-				text: '关于我们',
-				path: '/pages/about/index'
-			}, 
+            {
+                icon: '../../assets/images/iconfont-about.png',
+                text: '关于行享',
+                path: '/pages/my/about/index'
+            }, 
+
 		]
 	},
 	onLoad() {
@@ -47,7 +41,7 @@ Page({
 		const path = e.currentTarget.dataset.path
 
 		switch(index) {
-			case 2:
+			case 3:
 				App.WxService.makePhoneCall({
 					phoneNumber: path
 				})

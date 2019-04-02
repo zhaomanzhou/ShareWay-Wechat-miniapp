@@ -1,0 +1,59 @@
+
+@import "../../common/short_list.wxss";
+
+.scroll-list {
+    overflow: hidden;
+}
+
+.weui-icon-search, 
+.weui-search-bar__text {
+    vertical-align: inherit;
+}
+
+.topbar {
+    background: #fff;
+}
+
+.topbar-item {
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+    border-right: 1rpx;
+}
+
+.topbar-item.active {
+    color: #479de6;
+}
+
+.swiper_box {
+    width: 100%;
+}
+
+swiper-item image {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.tabbar{
+    margin-top: 3rpx;
+}
+
+.more{
+    margin-top: 1px;
+    height: 25px;
+    background-color: rgb(123, 212, 247);
+    
+}
+
+
+.new_task{
+    padding-left: 40rpx;
+
+}
+
+.more_btn{
+    position: absolute;
+    right: 0rpx;
+    padding-right: 40rpx;
+}

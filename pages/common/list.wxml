@@ -4,19 +4,26 @@
     <template is="prompt" data="{{ prompt }}"/>
     
 	<view class="scroll-list">
-		<view class="weui-panel weui-panel_access" wx:if="{{ !!goods.paginate.total }}">
+		<view class="weui-panel weui-panel_access" >
             <view class="weui-panel__bd">
-                <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ goods.items }}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
-                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="{{ item.thumb_url }}" />
-                    </view>
+
+
+                <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active"  wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
+
+
+                  
+
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">{{ item.name }}</view>
+                        <view class="weui-media-box__title">名字{{ item.name }}</view>
                         <view class="weui-media-box__desc">
-                            <text class="text-orangered">¥ {{ item.price }}</text>
+                            <text class="text-orangered">¥ 价格{{ item.price }}</text>
                         </view>
                     </view>
                 </view>
+
+
+
+
             </view>
         </view>
 	</view>

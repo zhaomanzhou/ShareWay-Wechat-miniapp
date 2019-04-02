@@ -1,0 +1,52 @@
+
+<view class="weui-form-preview">
+   
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item" >
+            <view class="weui-form-preview__label">任务标题：</view>
+            <view class="weui-form-preview__value">{{order.title}}</view>
+        </view>
+        <view class="weui-form-preview__item" >
+            <view class="weui-form-preview__label">送达地址：</view>
+            <view class="weui-form-preview__value">{{order.destination}}</view>
+        </view>
+        <view class="weui-form-preview__item" >
+            <view class="weui-form-preview__label">物品所在地：</view>
+            <view class="weui-form-preview__value">{{order.school=="south"?"南校": "北校"}} {{order.product_location}}</view>
+        </view>
+        <view class="weui-form-preview__item" >
+            <view class="weui-form-preview__label">代购：</view>
+            <view class="weui-form-preview__value">{{is_daigou? '是': '否'}}</view>
+        </view>
+        <view class="weui-form-preview__item" >
+            <view class="weui-form-preview__label">发布日期：</view>
+            <view class="weui-form-preview__value">{{is_daigou? '是': '否'}}</view>
+        </view>
+    
+    </view>
+   
+</view>
+
+<view class="weui-form-preview">
+    <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">订单总价</view>
+            <view class="weui-form-preview__value_in-hd">¥ {{total_price}}</view>
+        </view>
+    </view>
+    <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item" >
+            <view class="weui-form-preview__label">跑腿费</view>
+            <view class="weui-form-preview__value">￥{{order.task_price}}</view>
+        </view>
+        <view class="weui-form-preview__item" wx:if="{{is_daigou}}">
+            <view class="weui-form-preview__label">代购物品价格</view>
+            <view class="weui-form-preview__value">￥{{order.daigou_price}}</view>
+        </view>
+        
+    </view>
+    
+    <view class="weui-form-preview__ft">
+        <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">提交订单</navigator>
+    </view>
+</view>
