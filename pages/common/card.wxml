@@ -1,0 +1,36 @@
+<template name="na_tile">
+<view class='n_body' wx:if="{{publicStatus==panduan?true:fase}}">
+<view class='na_body'>
+  <view class='na_one'>
+     
+    <view class='na_one_l'>
+    {{id}}</view>
+    <view class='na_one_r'>{{publicStatus==0?'未接单':(publicStatus==1?'进行中':'已完成')}}</view>
+  </view>
+  <view class='na_two'>
+    <view class='na_two_o'>
+    <view class='biaoqian' wx:if="{{isDaigou==1?true:fase}}">代购</view>
+    <image class='na_img' src='/assets/images/tag.png'></image>
+    </view>
+    <view class='na_two_t'>
+     <view>
+    {{content}}
+    </view>
+     <view class='na_two_t_u'>
+    {{comment}}
+    </view>
+    </view>
+    <view class='na_two_th'>
+    <view class="na_two_th_u" > ￥{{daigouPrice+taskPrice}}</view>
+    </view>
+  </view>
+  <view class='na_three'>
+   <view class='na_three_r_l'  wx:if="{{publicStatus==1?true:false}}"
+   bindtap='listtap' data-category="{{id}}"
+    >确认付款</view>
+    <view class='na_three_r_r'wx:if="{{publicStatus==2?false:true}}">取消订单</view>
+  </view>
+</view>
+
+</view>
+</template>

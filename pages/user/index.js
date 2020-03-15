@@ -12,7 +12,7 @@ Page({
 			{
 				icon: '../../assets/images/get.png',
 				text: '我的接单',
-				path: '/pages/my/public/index'
+				path: '/pages/my/get/index'
 			}, 
             {
                 icon: '../../assets/images/iconfont-user-active.png',

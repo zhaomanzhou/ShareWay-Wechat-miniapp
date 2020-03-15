@@ -1,0 +1,140 @@
+.n_body {
+  background-color: white;
+  height: 100%;
+}
+
+.na_body {
+  margin: 20rpx;
+  height: 330rpx;
+  width: 710rpx;
+  background-color: #f8f8f8;
+  border-radius: 25rpx;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: #333;
+}
+
+
+
+.na_one {
+  height: 50rpx;
+  width: 95%;
+  margin: 10rpx 0;
+  margin-left: 15rpx;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.na_two {
+  height: 160rpx;
+  width: 670rpx;
+  margin: 10rpx 0;
+  margin-left: 20rpx;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
+
+.na_three {
+  height: 50rpx;
+  width: 95%;
+  margin: 10rpx 0;
+  margin-left: 15rpx;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+}
+
+.na_one_l {
+  position: absolute;
+  left: 60rpx;
+  top: 10rpx;
+}
+
+.na_one image {
+  height: 40rpx;
+  width: 40rpx;
+  border-radius: 20rpx;
+  position: absolute;
+  top: 5rpx;
+  left: 5rpx;
+}
+
+.na_one_r {
+  position: absolute;
+  right: 0rpx;
+  font-weight: bold;
+  top: 10rpx;
+}
+
+.na_two_o {
+  position: absolute;
+  width: 150rpx;
+  height: 150rpx;
+ 
+}
+
+.na_img {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.na_two_t {
+  width: 400rpx;
+  height: 100%;
+  position: absolute;
+  left: 170rpx;
+  font-weight: bold;
+}
+
+.na_two_t_u {
+  font-weight: normal;
+  color: rgb(163, 159, 159);
+}
+
+.na_two_th {
+  position: absolute;
+  right: 0rpx;
+  height: 100%;
+  width: 80rpx;
+}
+
+.biaoqian {
+  height: 30rpx;
+  width: 50rpx;
+  border-top-right-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+  color: white;
+  position: absolute;
+  background-color: red;
+  font-size: 20rpx;
+}
+
+.na_two_th_u {
+  color: red;
+  font-weight: bold;
+}
+
+.na_three_r_r {
+  width: 120rpx;
+  position: absolute;
+  right: 10rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid red;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.na_three_r_l {
+  width: 120rpx;
+  position: absolute;
+  right: 160rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid red;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}

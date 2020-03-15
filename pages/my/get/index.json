@@ -1,4 +1,4 @@
 {
-    "navigationBarTitleText": "我的订单",
-    "enablePullDownRefresh": true
+  "navigationBarTitleText": "我的接单",
+  "enablePullDownRefresh": true
 }

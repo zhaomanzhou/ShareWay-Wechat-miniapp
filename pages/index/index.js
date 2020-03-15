@@ -2,7 +2,8 @@ const App = getApp()
 
 Page({
     data: {
-        scrollHeight: 100 ,        
+        school_choice:"north",
+        scrollHeight: 100,
         activeIndex: 0,
         temp: 0,
         navList: [],
@@ -16,31 +17,31 @@ Page({
         prompt: {
             hidden: true,
         },
-      imgUrls: [
-        'http://img10.360buyimg.com/mobilecms/s250x250_jfs/t1/12249/21/8782/194362/5c78f130E245a768a/67c389e4247fcf7e.jpg',
-        'http://img12.360buyimg.com/mobilecms/s250x250_jfs/t1/29238/32/9764/178735/5c80ad56E8bcbe341/03cc199bf7a2e369.jpg',
-        'http:////img11.360buyimg.com/n1/s450x450_jfs/t1/19178/20/13515/90985/5c9f3036E9a93b208/1d6adcb2253a0e58.jpg'
-      ],
-      navList:[
-          {
-            _id: "1",
-            name: "北校"
-          },
-          {
-            _id: "2",
-            name: "南校"
-          }
-      ],
-      show_swagger: true,
+        imgUrls: [
+            'http://m.qpic.cn/psb?/V103h8rK0TKoBI/6ffgqbNhtfj4x3wCiavPvg6VSyYJakV9y7MBqsAu7J4!/b/dL8AAAAAAAAA&bo=GwSWAgAAAAADB6k!&rf=viewer_4',
+            'http://m.qpic.cn/psb?/V103h8rK0TKoBI/Gq3lED49R9HrCErP42ES0vZDpVN0VFcvDY7IY8Z1H9E!/b/dDcBAAAAAAAA&bo=EwSdAgAAAAADN5o!&rf=viewer_4',
+            'http://m.qpic.cn/psb?/V103h8rK0TKoBI/DwDolnkhdbplAA*z4.YXM.ff4neZN7NvC8UXF91gDoE!/b/dMEAAAAAAAAA&bo=IASvAgAAAAADN5s!&rf=viewer_4'
+        ],
+        navList: [{
+                _id: "1",
+                name: "北校"
+            },
+            {
+                _id: "2",
+                name: "南校"
+            }
+        ],
+        show_swagger: true,
         n_style: "weui-form-preview__btn weui-form-preview__btn_primary",
-        s_style:"weui-form-preview__btn weui-form-preview__btn_default"
+        s_style: "weui-form-preview__btn weui-form-preview__btn_default",
+        task_list:[]
     },
 
     onLoad() {
         var that = this;
         //获取系统的参数，scrollHeight数值,微信必须要设置style:height才能监听滚动事件
         wx.getSystemInfo({
-            success: function (res) {
+            success: function(res) {
                 console.log(res.windowHeight)
                 that.setData({
                     scrollHeight: parseInt(res.windowHeight) - 230
@@ -48,16 +49,51 @@ Page({
             }
         });
     },
+    onShow() {
+        let that = this;
+        wx.request({
+            url: App.server.basePath + '/task/all/simple',
+            method: "GET",
+            header: {
+                'content-type': 'json'
+            },
 
+            success: function(result) {
+
+                console.log(result.data.data);
+                that.setData({
+                    task_list: result.data.data
+                })
+            }
+        })
+    },
+
+    detail(e){
+        console.log(e.currentTarget.id)
+        let id = e.currentTarget.id;
+        wx.navigateTo({
+            url: '/pages/task/detail/index?task='+ this.getTaskById(id)
+        })
+    },
+
+    getTaskById(id){
+        let list = this.data.task_list;
+        for(var j = 0; j < list.length; j++){
+            if(list[j].id == id){
+                return JSON.stringify(list[j])
+            }
+
+        }
+    },
 
     initData() {
         const type = this.data.goods.params && this.data.goods.params.type || ''
         const goods = {
             items: [],
             params: {
-                page : 1,
+                page: 1,
                 limit: 10,
-                type : type,
+                type: type,
             },
             paginate: {}
         }
@@ -81,21 +117,21 @@ Page({
 
         // App.HttpService.getGoods(params)
         this.goods.queryAsync(params)
-        .then(res => {
-            const data = res.data
-            console.log(data)
-            if (data.meta.code == 0) {
-                data.data.items.forEach(n => n.thumb_url = App.renderImage(n.images[0] && n.images[0].path))
-                goods.items = [...goods.items, ...data.data.items]
-                goods.paginate = data.data.paginate
-                goods.params.page = data.data.paginate.next
-                goods.params.limit = data.data.paginate.perPage
-                this.setData({
-                    goods: goods,
-                    'prompt.hidden': goods.items.length,
-                })
-            }
-        })
+            .then(res => {
+                const data = res.data
+                console.log(data)
+                if (data.meta.code == 0) {
+                    data.data.items.forEach(n => n.thumb_url = App.renderImage(n.images[0] && n.images[0].path))
+                    goods.items = [...goods.items, ...data.data.items]
+                    goods.paginate = data.data.paginate
+                    goods.params.page = data.data.paginate.next
+                    goods.params.limit = data.data.paginate.perPage
+                    this.setData({
+                        goods: goods,
+                        'prompt.hidden': goods.items.length,
+                    })
+                }
+            })
     },
 
     //页面下拉刷新
@@ -103,18 +139,21 @@ Page({
         console.info('onPullDownRefresh')
         //this.initData()
         //this.getList()
+        this.onShow();
     },
 
     changeStyle(id) {
         if (id == "1") {
             this.setData({
                 n_style: "weui-form-preview__btn weui-form-preview__btn_primary",
-                s_style: "weui-form-preview__btn weui-form-preview__btn_default"
+                s_style: "weui-form-preview__btn weui-form-preview__btn_default",
+                school_choice:"north"
             })
-        } else if(id == "2") {
+        } else if (id == "2") {
             this.setData({
                 s_style: "weui-form-preview__btn weui-form-preview__btn_primary",
-                n_style: "weui-form-preview__btn weui-form-preview__btn_default"
+                n_style: "weui-form-preview__btn weui-form-preview__btn_default",
+                school_choice: "south"
             })
         }
     },
@@ -128,9 +167,9 @@ Page({
 
     },
 
-    
 
-    detailPage(){
+
+    detailPage() {
         wx.navigateTo({
             url: '/pages/index/detail/detail',
         })
@@ -143,9 +182,9 @@ Page({
         const goods = {
             items: [],
             params: {
-                page : 1,
+                page: 1,
                 limit: 10,
-                type : type,
+                type: type,
             },
             paginate: {}
         }
@@ -156,5 +195,5 @@ Page({
         this.getList()
     },
 
-    
+
 })

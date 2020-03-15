@@ -1,3 +1,4 @@
+@import "../../common/cardd.wxss";
 .scroll-list {
     overflow: hidden;
 }
@@ -6,7 +7,9 @@
     margin-top: 0;
     background: #fff;
 }
-
+.weui-navbar{
+  background-color: white;
+}
 .topbar-item {
     color: #333;
     text-align: center;
@@ -25,4 +28,17 @@ swiper-item image {
     width: 100%;
     display: inline-block;
     overflow: hidden;
+}
+
+na_page,
+.na_page,
+.na_page__bd{
+    height: 100%;
+}
+.na_page__bd{
+    padding-bottom: 0;
+}
+.na_weui-tab__content{
+    padding-top: 60px;
+    text-align: center;
 }

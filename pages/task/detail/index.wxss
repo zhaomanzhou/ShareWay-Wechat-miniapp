@@ -1,1 +1,4 @@
-/* pages/order/detail/index.wxss */
+.submit-btn{
+    margin: -10rpx;
+    margin-top: 20rpx;
+}

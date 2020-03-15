@@ -1,107 +1,67 @@
 const App = getApp()
-
+var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 Page({
-    data: {
-        activeIndex: 0,
-        navList: [],
-        order: {},
-        prompt: {
-            hidden: !0,
-            icon: '../../../assets/images/iconfont-order-default.png',
-            title: '您还没有相关的订单',
-            text: '可以去看看有哪些想买的',
-        },
-    },
-    onLoad() {
-        this.order = App.HttpResource('/order/:id', {id: '@id'})
-        this.setData({
-            navList: [
-                {
-                    name: '全部',
-                    _id: 'all',
-                },
-                {
-                    name: '已提交',
-                    _id: 'submitted',
-                },
-                {
-                    name: '已确认',
-                    _id: 'confirmed',
-                },
-                {
-                    name: '已完成',
-                    _id: 'finished',
-                },
-                {
-                    name: '已取消',
-                    _id: 'canceled',
-                },
-            ]
-        })
-        this.onPullDownRefresh()
-    },
-    initData() {
-        const order = this.data.order
-        const params = order && order.params
-        const type = params && params.type || 'all'
-
-        this.setData({
-            order: {
-                items: [],
-                params: {
-                    page : 1,
-                    limit: 10,
-                    type : type,
-                },
-                paginate: {}
-            }
-        })
-    },
-    navigateTo(e) {
-        console.log(e)
-        App.WxService.navigateTo('/pages/order/detail/index', {
-            id: e.currentTarget.dataset.id
-        })
-    },
-    getList() {
-        const order = this.data.order
-        const params = order.params
-
-        // App.HttpService.getOrderList(params)
-        this.order.queryAsync(params)
-        .then(res => {
-            const data = res.data
-            console.log(data)
-            if (data.meta.code == 0) {
-                order.items = [...order.items, ...data.data.items]
-                order.paginate = data.data.paginate
-                order.params.page = data.data.paginate.next
-                order.params.limit = data.data.paginate.perPage
-                this.setData({
-                    order: order,
-                    'prompt.hidden': order.items.length,
-                })
-            }
-        })
-    },
-    onPullDownRefresh() {
-        console.info('onPullDownRefresh')
-        this.initData()
-        this.getList()
-    },
-    onReachBottom() {
-        console.info('onReachBottom')
-        if (!this.data.order.paginate.hasNext) return
-        this.getList()
-    },
-    onTapTag(e) {
-        const type = e.currentTarget.dataset.type
-        const index = e.currentTarget.dataset.index
-        this.initData()
-        this.setData({
-            activeIndex: index,
-            'order.params.type': type,
-        })
-        this.getList()
-    },
-})
+  data: {
+    tabs: ["全部", "进行中", "已完成"],
+    activeIndex: 1,
+    sliderOffset: 0,
+    sliderLeft: 0,
+    task: {}
+  },
+  onLoad: function() {
+    var that = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
+    this.initData();
+  },
+  listtap: function (event) {
+    var that = this;
+    let taskId = event.currentTarget.dataset.category;
+    console.log(taskId);
+    wx.request({
+      url: App.server.basePath + "/taskuser/my/get/status/" + taskId + "?get_status=1",
+      method: "PUT",
+      header: {
+        'content-type': 'json'
+      },
+      success: function (result) {
+        console.log("修改成功");
+      }
+    })
+    this.initData();
+  },
+  initData() {
+    var that=this;
+    let user_id = wx.getStorageSync("user_id");
+    console.log(user_id);
+    wx.request({
+      url: App.server.basePath + "/taskuser/my/get/" + user_id,
+      method: "GET",
+      header: {
+        'content-type': 'json'
+      },
+      success: function(result) {
+        console.log(result.data);
+        that.setData({
+          task: result.data
+        });
+      },
+      fail: function (res) {
+        console.log('submit fail');
+      }  
+      
+    })
+  },
+  tabClick: function(e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
+  }
+});

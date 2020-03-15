@@ -25,8 +25,8 @@
 
 
 <scroll-view scroll-y style="height: {{scrollHeight}}px;" scroll-with-animation="{{true}}" >
-    <template is="short_list" />
-    <template is="short_list" />
-    <template is="short_list" />
-    <template is="short_list" />
+    <block wx:for="{{task_list}}" wx:for-item="item" wx:for-index="idx">
+        <template is="short_list" data="{{...item, school_choice}}"/>
+    </block>
+    
 </scroll-view>

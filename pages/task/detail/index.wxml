@@ -7,6 +7,10 @@
             <view class="weui-form-preview__value">{{order.title}}</view>
         </view>
         <view class="weui-form-preview__item" >
+            <view class="weui-form-preview__label">任务内容：</view>
+            <view class="weui-form-preview__value">{{content}}</view>
+        </view>
+        <view class="weui-form-preview__item" >
             <view class="weui-form-preview__label">送达地址：</view>
             <view class="weui-form-preview__value">{{order.destination}}</view>
         </view>
@@ -20,7 +24,15 @@
         </view>
         <view class="weui-form-preview__item" >
             <view class="weui-form-preview__label">发布日期：</view>
-            <view class="weui-form-preview__value">{{is_daigou? '是': '否'}}</view>
+            <view class="weui-form-preview__value">{{order.publicDate}}</view>
+        </view>
+        <view class="weui-form-preview__item" >
+            <view class="weui-form-preview__label">对方电话</view>
+            <view class="weui-form-preview__value">{{fake_tel}}</view>
+        </view>
+        <view class="weui-form-preview__item" >
+            <view class="weui-form-preview__label">备注：</view>
+            <view class="weui-form-preview__value">{{fake_comment}}</view>
         </view>
     
     </view>
@@ -31,22 +43,44 @@
     <view class="weui-form-preview__hd">
         <view class="weui-form-preview__item">
             <view class="weui-form-preview__label">订单总价</view>
-            <view class="weui-form-preview__value_in-hd">¥ {{total_price}}</view>
+            <view class="weui-form-preview__value_in-hd">¥ {{totalPrice}}</view>
         </view>
     </view>
     <view class="weui-form-preview__bd">
         <view class="weui-form-preview__item" >
             <view class="weui-form-preview__label">跑腿费</view>
-            <view class="weui-form-preview__value">￥{{order.task_price}}</view>
+            <view class="weui-form-preview__value">￥{{order.taskPrice}}</view>
         </view>
         <view class="weui-form-preview__item" wx:if="{{is_daigou}}">
             <view class="weui-form-preview__label">代购物品价格</view>
-            <view class="weui-form-preview__value">￥{{order.daigou_price}}</view>
+            <view class="weui-form-preview__value">￥{{order.daigouPrice}}</view>
         </view>
         
     </view>
     
     <view class="weui-form-preview__ft">
-        <navigator class="weui-form-preview__btn weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">提交订单</navigator>
+       
     </view>
+     <button class="weui-btn submit-btn" type="primary" bindtap='get'>接单</button>
 </view>
+
+
+  <!-- <van-dialog
+    use-slot
+    
+    show="{{ show }}"
+    transition="fade"
+    confirm="confim"
+    swiperchange="confirm"
+    
+  >
+    
+    <van-field
+      value="{{ contact }}"
+      type="text"
+      label="联系方式"
+      border="{{ false }}"
+      placeholder="请输入你的联系方式"
+    />
+  </van-dialog> -->
+
