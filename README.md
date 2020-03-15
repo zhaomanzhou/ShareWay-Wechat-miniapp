@@ -35,16 +35,16 @@ m-mall/
 
 ## 项目截图:
 
-<img src="./screenshorts/1.jpg" style="display:inline;">
+<img src="./screenshots/1.jpg" style="display:inline;">
 
-<img src="./screenshorts/2.jpg" style="display:inline;">
+<img src="./screenshots/2.jpg" style="display:inline;">
  
-<img src="./screenshorts/3.jpg" style="display:inline;">
-<img src="./screenshorts/4.jpg" style="display:inline;">
-<img src="./screenshorts/5.jpg" style="display:inline;">
-<img src="./screenshorts/6.jpg" style="display:inline;">
-<img src="./screenshorts/7.jpg" style="display:inline;">
-<img src="./screenshorts/8.jpg" style="display:inline;">
-<img src="./screenshorts/9.jpg" style="display:inline;">
-<img src="./screenshorts/10.jpg" style="display:inline;">
+<img src="./screenshots/3.jpg" style="display:inline;">
+<img src="./screenshots/4.jpg" style="display:inline;">
+<img src="./screenshots/5.jpg" style="display:inline;">
+<img src="./screenshots/6.jpg" style="display:inline;">
+<img src="./screenshots/7.jpg" style="display:inline;">
+<img src="./screenshots/8.jpg" style="display:inline;">
+<img src="./screenshots/9.jpg" style="display:inline;">
+<img src="./screenshots/10.jpg" style="display:inline;">
   
